@@ -1,0 +1,6 @@
+NPM - node's packahe manager; precisa do node.js instalado e para rodar o servidor do Angular
+npm install -g @angular/cli
+
+ng new fitness-tracker
+
+Angular Material não se instala globalmente!
