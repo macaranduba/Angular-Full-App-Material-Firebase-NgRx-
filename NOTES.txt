@@ -5,3 +5,11 @@ ng new fitness-tracker
 
 Angular Material não se instala globalmente!
 ng add @angular/material
+
+// cria o component Signup dentro da pasta auth, no módulo app.module.ts
+ng g c auth/signup --module app.module
+ng g c auth/login --module app.module
+ng g c training --module app.module
+ng g c training/current-training --module app.module
+ng g c training/new-training --module app.module
+ng g c training/past-trainings --module app.module
