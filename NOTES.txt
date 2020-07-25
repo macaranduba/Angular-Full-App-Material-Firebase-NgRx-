@@ -4,3 +4,4 @@ npm install -g @angular/cli
 ng new fitness-tracker
 
 Angular Material não se instala globalmente!
+ng add @angular/material
