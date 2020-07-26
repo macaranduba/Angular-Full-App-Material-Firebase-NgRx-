@@ -1,10 +1,32 @@
 <section class="signup-form">
   <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="onSubmit(f)">
     <mat-form-field>
-      <input type="email" matInput placeholder="E-mail" ngModel name="email">
+      <input
+        type="email"
+        matInput
+        placeholder="E-mail"
+        ngModel
+        name="email"
+        email
+        required
+        #emailInput="ngModel"
+      > <!-- "email", in input field, is an Angular directive, not a Material directive-->
+      <mat-error *ngIf="emailInput.hasError('required')">E-mail não pode ser vazio</mat-error>
+      <mat-error *ngIf="!emailInput.hasError('required')">E-mail inválido</mat-error>
     </mat-form-field>
-    <mat-form-field>
-      <input type="password" matInput placeholder="Password" ngModel name="password">
+    <mat-form-field hintLabel="Mínimo de 6 caracteres">
+      <input
+        type="password"
+        matInput
+        placeholder="Password"
+        ngModel
+        name="password"
+        required
+        minlength="6"
+        #pwInput="ngModel"
+      >
+      <mat-hint align="end"> {{ pwInput.value?.length }} / 6</mat-hint>
+      <mat-error>A password tem de ter, no mínimo, 6 caracteres!</mat-error> <!-- mat-error overrides mat-hint, visually -->
     </mat-form-field>
     <button type="submit" mat-raised-button color="primary">Cadastrar</button>
   </form>
