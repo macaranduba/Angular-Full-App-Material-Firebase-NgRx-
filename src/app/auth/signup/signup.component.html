@@ -1,5 +1,5 @@
 <section class="signup-form">
-  <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap=".625em" #f="ngForm" (ngSubmit)="onSubmit(f)">
     <mat-form-field>
       <input
         type="email"
@@ -48,7 +48,12 @@
       required
       color="primary"
     >Li e concordo com os termos e condições.</mat-checkbox>
-    <button type="submit" mat-raised-button color="primary">Cadastrar</button>
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="f.invalid"
+    >Cadastrar</button>
   </form>
 </section>
 
