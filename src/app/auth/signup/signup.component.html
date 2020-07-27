@@ -28,6 +28,11 @@
       <mat-hint align="end"> {{ pwInput.value?.length }} / 6</mat-hint>
       <mat-error>A password tem de ter, no mínimo, 6 caracteres!</mat-error> <!-- mat-error overrides mat-hint, visually -->
     </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Data de nascimento" [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
     <button type="submit" mat-raised-button color="primary">Cadastrar</button>
   </form>
 </section>
