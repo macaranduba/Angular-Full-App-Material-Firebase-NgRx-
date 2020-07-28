@@ -1,1 +1,31 @@
-<p>login works!</p>
+<section>
+  <form
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="10px"
+    [formGroup]="loginForm"
+    (ngSubmit)="onLogon()"
+  >
+    <mat-form-field>
+      <input
+        type="email"
+        matInput
+        placeholder="E-mail"
+        formControlName="email"
+      >
+      <mat-hint>Insira aqui o seu e-mail.</mat-hint>
+      <mat-error>E-mail inválido ou por preencher.</mat-error> <!-- if hint and error are present, error will override hint -->
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        type="password"
+        matInput
+        placeholder="Senha"
+        formControlName="password"
+      >
+      <mat-hint>Insira aqui a sua senha.</mat-hint>
+      <mat-error>Senha por preencher.</mat-error> <!-- if hint and error are present, error will override hint -->
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Entrar</button>
+  </form>
+</section>
