@@ -22,3 +22,5 @@ https://github.com/angular/flex-layout/wiki/Using-Angular-CLI
 
 npm install @angular/flex-layout --save
 
+https://github.com/angular/flex-layout/wiki/Responsive-API
+
