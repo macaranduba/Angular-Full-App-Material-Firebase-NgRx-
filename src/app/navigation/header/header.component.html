@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+  <div fxHide.gt-xs>
+    <button mat-icon-button (click)="onToggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <div><a routerLink="/">LOGO</a></div>
+  <!--div fxFlex>Alternative for getting all toolbar links at the most right side. fxFlex makes an element to strech as much as possible</div-->
+  <div fxFlex fxLayoutAlign="flex-end" fxHide.xs>
+    <ul fxLayout fxLayoutGap="10px" class="navigation-items">
+      <li><a routerLink="/login">Entrar</a></li>
+      <li><a routerLink="/training">Treinar</a></li>
+      <li><a routerLink="/signup">Cadastrar</a></li>
+      <li><a>Sair</a></li>
+    </ul>
+  </div>
+</mat-toolbar>

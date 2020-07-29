@@ -16,11 +16,12 @@ ng g c training/past-trainings --module app.module
 ng g c welcome --module app.module
 
 Angular Flex Layout (uses CSS Flexbox)
+npm install @angular/flex-layout --save
 https://github.com/angular/flex-layout/wiki/API-Documentation
 https://github.com/angular/flex-layout/wiki/Declarative-API-Overview
 https://github.com/angular/flex-layout/wiki/Using-Angular-CLI
-
-npm install @angular/flex-layout --save
-
 https://github.com/angular/flex-layout/wiki/Responsive-API
+
+ng g c navigation/header --module app.module
+ng g c navigation/sidenav-list --module app.module
 
