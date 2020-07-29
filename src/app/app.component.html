@@ -3,8 +3,18 @@
     <p>Eu sou a barra lateral!</p>
   </mat-sidenav>
   <mat-sidenav-content>
-    <button (click)="sidenav.toggle()">Mostra a barra lateral</button>
-    <router-outlet></router-outlet>
+    <mat-toolbar color="primary">
+      <div><button (click)="sidenav.toggle()">Alterna navegação lateral</button></div>
+      <div>LOGO</div>
+      <div>
+        <a routerLink="/login">Entrar</a>
+        <a routerLink="/trainning">Treinar</a>
+        <a routerLink="/signup">Cadastrar</a>
+      </div>
+    </mat-toolbar>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
   </mat-sidenav-content>
 </mat-sidenav-container>
 
