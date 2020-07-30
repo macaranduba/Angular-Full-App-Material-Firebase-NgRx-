@@ -9,6 +9,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatListModule } from '@angular/material/list';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
@@ -23,6 +24,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatListModule,
     MatNativeDateModule,
     MatSidenavModule,
+    MatTabsModule,
     MatToolbarModule,
   ]
 })
