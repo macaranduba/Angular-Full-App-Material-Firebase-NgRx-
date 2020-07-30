@@ -15,6 +15,7 @@ import { PastTrainingsComponent } from './training/past-trainings/past-trainings
 import { SignupComponent } from './auth/signup/signup.component';
 import { TrainingComponent } from './training/training.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
+import { StopTrainingComponent } from './training/current-training/stop-traning.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
@@ -28,6 +29,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
     SignupComponent,
     TrainingComponent,
     SidenavListComponent,
+    StopTrainingComponent,
     WelcomeComponent,
   ],
   imports: [
@@ -41,6 +43,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
     MaterialModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ StopTrainingComponent ] // components that are neither instanriated by selector on HTML nor routing
 })
 export class AppModule { }
