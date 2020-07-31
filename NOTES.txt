@@ -25,3 +25,11 @@ https://github.com/angular/flex-layout/wiki/Responsive-API
 ng g c navigation/header --module app.module
 ng g c navigation/sidenav-list --module app.module
 
+/**** ViewChild ****/
+  Angular 9/10:
+  ● if accessed in ngOnInit(): @ViewChild('myReference', { static: true }) myElement: ElementRef;
+  ● otherwise: @ViewChild('myReference') myElement: ElementRef;
+  The same applies to @ContentChild (introduced later in the course).
+*/
+
+
