@@ -48,7 +48,7 @@ export class CurrentTrainingComponent implements OnInit, OnDestroy {
   private stopTimer() {
     if ( this.timerId ) {
       clearInterval( this.timerId );
-      this.timerId = undefined;
+      this.timerId = null;
     }
   }
 
