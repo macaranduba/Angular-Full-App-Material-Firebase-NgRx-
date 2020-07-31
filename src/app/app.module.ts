@@ -17,6 +17,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { TrainingComponent } from './training/training.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { StopTrainingComponent } from './training/current-training/stop-traning.component';
+import { TrainingService } from './training/training.service';
 import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
@@ -43,7 +44,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
     AppRoutingModule,
     MaterialModule,
   ],
-  providers: [ AuthService ],
+  providers: [ AuthService, TrainingService ],
   bootstrap: [AppComponent],
   entryComponents: [ StopTrainingComponent ] // components that are neither instanriated by selector on HTML nor routing
 })

@@ -4,16 +4,10 @@
     <!-- fxLayoutAlign implicity includes fxLayout="row" -->
     <mat-card-content fxLayoutAlign="center">
       <mat-form-field>
-        <mat-label>Favorite food</mat-label>
+        <mat-label>Exercício</mat-label>
         <mat-select>
-          <mat-option value="abdominais">
-            Abdominais
-          </mat-option>
-          <mat-option value="alongamentos">
-            Alongamentos
-          </mat-option>
-          <mat-option value="flexoes">
-            Flexões
+          <mat-option *ngFor="let exercise of exercises" [value]="exercise.id">
+            {{ exercise.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>    </mat-card-content>
