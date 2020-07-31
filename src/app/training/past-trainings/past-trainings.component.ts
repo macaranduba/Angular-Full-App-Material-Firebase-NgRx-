@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+
+import { Exercise } from '../exercise.model';
+import { TrainingService } from '../training.service';
 
 @Component({
   selector: 'app-past-trainings',
@@ -6,10 +10,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./past-trainings.component.css']
 })
 export class PastTrainingsComponent implements OnInit {
+  displayedColumns = ['date', 'name', 'calories', 'duration', 'state']; // matColumnDef values bu the other in which they will be displayed
+  dataSource = new MatTableDataSource<Exercise>();
 
-  constructor() { }
+
+  constructor(private trainingService: TrainingService) { }
 
   ngOnInit(): void {
+    this.dataSource.data = this.trainingService.getCompletedOrCancelledExercises();
   }
 
+  translateState(state: string) {
+    let translatedState = '';
+    switch( state ) {
+      case 'cancelled': translatedState = 'Cancelado'; break;
+      case 'completed': translatedState = 'Completo'; break;
+      default: translatedState = '';
+    }
+    return translatedState;
+  }
 }
