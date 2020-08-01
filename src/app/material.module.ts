@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatListModule } from '@angular/material/list';
+import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
@@ -17,6 +18,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
+
+import { CustomPaginator } from './common/angular/custom.paginator';
 
 @NgModule({
   //imports: [],
@@ -30,6 +33,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatInputModule,
     MatDatepickerModule,
     MatListModule,
+    MatPaginatorModule,
     MatProgressSpinnerModule,
     MatNativeDateModule,
     MatSelectModule,
@@ -38,6 +42,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
-  ]
+  ],
+  providers: [
+    {
+      provide: MatPaginatorIntl,
+      useClass: CustomPaginator,
+    }
+  ],
 })
 export class MaterialModule { }

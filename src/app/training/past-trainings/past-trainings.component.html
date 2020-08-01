@@ -8,7 +8,7 @@
 
   <ng-container matColumnDef="date">
     <mat-header-cell *matHeaderCellDef mat-sort-header>Data</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{ element.endDate  }}</mat-cell>
+    <mat-cell *matCellDef="let element">{{ element.endDate | date  }}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="name">
@@ -35,3 +35,5 @@
   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
 </mat-table>
+
+<mat-paginator [pageSize]="1" [pageSizeOptions]="[1, 5, 10, 20]" showFirstLastButtons #paginator></mat-paginator>

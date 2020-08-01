@@ -44,7 +44,10 @@ import { WelcomeComponent } from './welcome/welcome.component';
     AppRoutingModule,
     MaterialModule,
   ],
-  providers: [ AuthService, TrainingService ],
+  providers: [
+    AuthService,
+    TrainingService,
+  ],
   bootstrap: [AppComponent],
   entryComponents: [ StopTrainingComponent ] // components that are neither instanriated by selector on HTML nor routing
 })
