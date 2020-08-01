@@ -35,4 +35,8 @@ export class PastTrainingsComponent implements OnInit, AfterViewInit {
     }
     return translatedState;
   }
+
+  doFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase(); // angular material compares data source values in lower case fashion way
+  }
 }
