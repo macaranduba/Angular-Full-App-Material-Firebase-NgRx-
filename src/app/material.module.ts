@@ -11,7 +11,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSortModule } from '@angular/material/sort';
@@ -44,10 +44,10 @@ import { CustomPaginator } from './common/angular/custom.paginator';
     MatToolbarModule,
   ],
   providers: [
-    {
-      provide: MatPaginatorIntl,
-      useClass: CustomPaginator,
-    }
+    { provide: MatPaginatorIntl, useClass: CustomPaginator },
+    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
+
+
   ],
 })
 export class MaterialModule { }

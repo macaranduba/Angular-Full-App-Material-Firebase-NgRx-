@@ -2,7 +2,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
+
+// https://pt.stackoverflow.com/questions/332195/angular-6-data-e-hora-em-portugues
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+registerLocaleData(localePt);
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -47,6 +52,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
   providers: [
     AuthService,
     TrainingService,
+    { provide: LOCALE_ID, useValue: "pt" },
   ],
   bootstrap: [AppComponent],
   entryComponents: [ StopTrainingComponent ] // components that are neither instanriated by selector on HTML nor routing
