@@ -1,12 +1,15 @@
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { environment } from './../environments/environment';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule, LOCALE_ID } from '@angular/core';
 
 // https://pt.stackoverflow.com/questions/332195/angular-6-data-e-hora-em-portugues
-import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
 registerLocaleData(localePt);
 
 import { AppRoutingModule } from './app-routing.module';
@@ -40,6 +43,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
     WelcomeComponent,
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase), // general firebase setup
+    AngularFirestoreModule, // firebase database
     BrowserModule,
     BrowserAnimationsModule,
     FlexLayoutModule,

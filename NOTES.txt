@@ -32,4 +32,23 @@ ng g c navigation/sidenav-list --module app.module
   The same applies to @ContentChild (introduced later in the course).
 */
 
+https://github.com/angular/angularfire
+
+/****************/
+/*** FIREBASE ***/
+/****************/
+// from https://github.com/angular/angularfire/blob/master/docs/install-and-setup.md
+>ng add @angular/fire
+
+// from video lesson
+> npm install @angularfire firebase --save (wrong)
+
+// from [Tip] Project Update Guide thread discussion
+> npm i firebase
+> npm i @angular/fire
+(what i used)> npm install @angular/fire firebase --save
+
+
+
+
 
