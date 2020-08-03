@@ -42,13 +42,13 @@ export class TrainingService {
   }
 
   completeExercise() {
-    this.exercises.push( { ...this.runningExercise, endDate: new Date(), state: 'completed' } );
+    this.addDataToDatabase( { ...this.runningExercise, endDate: new Date(), state: 'completed' } );
     this.runningExercise = null;
     this.exerciseChanged.next( null );
    }
 
   cancelExercise(progress: number) {
-    this.exercises.push( {
+    this.addDataToDatabase( {
       ...this.runningExercise,
       endDate: new Date(),
       state: 'cancelled',
@@ -65,5 +65,9 @@ export class TrainingService {
 
   getCompletedOrCancelledExercises() {
     return this.exercises.slice();
+  }
+
+  addDataToDatabase(exercise: Exercise) {
+    this.db.collection('finishedExercises').add( exercise );
   }
 }
