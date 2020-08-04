@@ -1,4 +1,4 @@
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
 import { map, tap } from 'rxjs/operators';
 import { Subject, Observable } from 'rxjs';
@@ -10,7 +10,6 @@ export class TrainingService {
   exerciseChanged = new Subject<Exercise>();
   private availableExercises: Exercise[] = [];
   private runningExercise: Exercise;
-  private exercises: Exercise[] = [];
 
   constructor(private db: AngularFirestore) {}
 
@@ -63,8 +62,19 @@ export class TrainingService {
     return { ...this.runningExercise }; // returning a copy of the running exercise
   }
 
-  getCompletedOrCancelledExercises() {
-    return this.exercises.slice();
+  fetchCompletedOrCancelledExercises(): Observable<Exercise[]> {
+    return (this.db.collection('finishedExercises') as AngularFirestoreCollection<Exercise>).valueChanges()
+      .pipe(
+        map( (exercises: Exercise[]) => {
+          return exercises.map(exercise => {
+            console.log(exercise);
+            return {
+              ...exercise,
+              endDate: ((exercise.endDate as unknown) as firebase.firestore.Timestamp).toDate(),
+            };
+          })
+        })
+      );
   }
 
   addDataToDatabase(exercise: Exercise) {
