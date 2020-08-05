@@ -1,7 +1,7 @@
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
-import { map, tap } from 'rxjs/operators';
-import { Subject, Observable } from 'rxjs';
+import { map, tap, catchError } from 'rxjs/operators';
+import { Subject, Observable, of } from 'rxjs';
 
 import { Exercise } from "./exercise.model";
 
@@ -16,8 +16,15 @@ export class TrainingService {
   fetchAvailableExercises(): Observable<Exercise[]> {
     return this.db.collection('availableExercises').snapshotChanges()
 			.pipe(
+        catchError( error => {
+          console.log( error );
+          return of( null );
+        }),
 				map( docArray => {
-          console.info(docArray);
+          console.info( docArray );
+          if( docArray == null ) {
+            return [];
+          }
 					return docArray.map( doc => {
 						return {
 							id: doc.payload.doc.id,
@@ -66,6 +73,10 @@ export class TrainingService {
   fetchCompletedOrCancelledExercises(): Observable<Exercise[]> {
     return (this.db.collection('finishedExercises') as AngularFirestoreCollection<Exercise>).valueChanges()
       .pipe(
+        catchError( error => {
+          console.log( error );
+          return of( [] );
+        }),
         map( (exercises: Exercise[]) => {
           return exercises.map(exercise => {
             console.log(exercise);

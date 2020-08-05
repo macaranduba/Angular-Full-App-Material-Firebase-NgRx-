@@ -38,6 +38,7 @@ export class AuthService {
     this.afAuth.signOut(); // get ride of the authentication token
     this.isAuthenticated = false;
     this.authChange.next( false );
+    this.router.navigate( [ '/login' ] );
   }
 
   isAuth() {
