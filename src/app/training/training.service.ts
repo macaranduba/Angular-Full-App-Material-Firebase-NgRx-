@@ -21,7 +21,7 @@ export class TrainingService {
           return of( null );
         }),
 				map( docArray => {
-          console.info( docArray );
+          //console.info( docArray );
           if( docArray == null ) {
             return [];
           }
@@ -79,7 +79,7 @@ export class TrainingService {
         }),
         map( (exercises: Exercise[]) => {
           return exercises.map(exercise => {
-            console.log(exercise);
+            //console.log(exercise);
             return {
               ...exercise,
               endDate: ((exercise.endDate as unknown) as firebase.firestore.Timestamp).toDate(),

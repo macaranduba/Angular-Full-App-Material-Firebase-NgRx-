@@ -14,13 +14,29 @@ export class AuthService {
   authChange = new Subject<boolean>();
   private isAuthenticated: boolean = false;
 
-  constructor(private router: Router, private afAuth: AngularFireAuth) {}
+  constructor(
+    private router: Router,
+    private afAuth: AngularFireAuth
+  ) {}
+
+  initAuthListener() {
+    this.afAuth.authState.subscribe(user => {
+      if( user ) {
+        this.isAuthenticated = true;
+        this.authChange.next( true );
+        this.router.navigate( [ '/training' ] );
+      } else {
+        this.isAuthenticated = false;
+        this.authChange.next( false );
+        this.router.navigate( [ '/login' ] );
+      }
+    });
+  }
 
   registerUser(authData: AuthData) {
     this.afAuth.createUserWithEmailAndPassword(authData.email, authData.password)
       .then( result => {
         //console.log(result);
-        this.authSuccessfully();
       })
       .catch( error => console.log(error) );
   }
@@ -29,25 +45,15 @@ export class AuthService {
     this.afAuth.signInWithEmailAndPassword(authData.email, authData.password)
     .then( result => {
       console.log(result);
-      this.authSuccessfully();
     })
     .catch( error => console.log(error) );
 }
 
   logout() {
     this.afAuth.signOut(); // get ride of the authentication token
-    this.isAuthenticated = false;
-    this.authChange.next( false );
-    this.router.navigate( [ '/login' ] );
   }
 
   isAuth() {
     return this.isAuthenticated;
-  }
-
-  private authSuccessfully() {
-    this.isAuthenticated = true;
-    this.authChange.next( true );
-    this.router.navigate( [ '/training' ] );
   }
 }
