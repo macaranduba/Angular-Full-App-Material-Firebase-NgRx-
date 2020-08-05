@@ -10,7 +10,7 @@ import { NgModule, LOCALE_ID } from '@angular/core';
 
 // https://pt.stackoverflow.com/questions/332195/angular-6-data-e-hora-em-portugues
 import localePt from '@angular/common/locales/pt';
-import { registerLocaleData } from '@angular/common';
+import { registerLocaleData, DatePipe } from '@angular/common';
 registerLocaleData(localePt);
 
 import { AppRoutingModule } from './app-routing.module';
@@ -58,6 +58,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
   ],
   providers: [
     AuthService,
+    DatePipe,
     TrainingService,
     { provide: LOCALE_ID, useValue: "pt" },
   ],

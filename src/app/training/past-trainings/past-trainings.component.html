@@ -6,9 +6,9 @@
 
 <mat-table [dataSource]="dataSource" matSort>
 
-  <ng-container matColumnDef="date">
+  <ng-container matColumnDef="endDatePiped">
     <mat-header-cell *matHeaderCellDef mat-sort-header>Data</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{ element.endDate | date }}</mat-cell>
+    <mat-cell *matCellDef="let element">{{ element.endDatePiped }}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="name">
@@ -36,4 +36,4 @@
 
 </mat-table>
 
-<mat-paginator [pageSize]="1" [pageSizeOptions]="[1, 5, 10, 20]" showFirstLastButtons #paginator></mat-paginator>
+<mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons #paginator></mat-paginator>

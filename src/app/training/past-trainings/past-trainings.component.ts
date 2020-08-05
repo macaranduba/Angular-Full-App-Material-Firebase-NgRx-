@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { map } from 'rxjs/operators';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -13,19 +15,34 @@ import { TrainingService } from '../training.service';
   styleUrls: ['./past-trainings.component.css']
 })
 export class PastTrainingsComponent implements OnInit, AfterViewInit, OnDestroy {
-  displayedColumns = ['date', 'name', 'calories', 'duration', 'state']; // matColumnDef values bu the other in which they will be displayed
+  displayedColumns = ['endDatePiped', 'name', 'calories', 'duration', 'state']; // matColumnDef values bu the other in which they will be displayed
   dataSource = new MatTableDataSource<Exercise>();
   private subscription: Subscription;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private trainingService: TrainingService) { }
+  constructor(private trainingService: TrainingService, private datePipe: DatePipe) { }
 
   ngOnInit(): void {
-    this.subscription = this.trainingService.fetchCompletedOrCancelledExercises().subscribe( data => {
-      this.dataSource.data = data;
-    });
+    this.subscription = this.trainingService.fetchCompletedOrCancelledExercises()
+      .pipe(
+        map( data => {
+          return data.map( exercise => {
+            let temp = {
+              ...exercise,
+              endDatePiped: this.datePipe.transform( exercise.endDate ),
+              // we should also do the state i18n here...
+            };
+            delete temp.endDate;
+            return temp;
+          })
+        }),
+      )
+      .subscribe( data => {
+        this.dataSource.data = data;
+        console.info("PastTrainingComponent.ngOnInit()", data);
+      });
   }
 
   ngAfterViewInit() {
