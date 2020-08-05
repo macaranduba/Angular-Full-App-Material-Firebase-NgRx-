@@ -1,3 +1,4 @@
+import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -11,41 +12,39 @@ export class AuthService {
    * true is it is signed in, false otherwise
    */
   authChange = new Subject<boolean>();
-  private user: User; // undefined
+  private isAuthenticated: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private afAuth: AngularFireAuth) {}
 
   registerUser(authData: AuthData) {
-    this.user = {
-      email: authData.email,
-      userId: Math.round( Math.random() * 10000 ).toString(), // temp
-    };
-    this.authSuccessfully();
+    this.afAuth.createUserWithEmailAndPassword(authData.email, authData.password)
+      .then( result => {
+        //console.log(result);
+        this.authSuccessfully();
+      })
+      .catch( error => console.log(error) );
   }
 
   login(authData: AuthData) {
-    this.user = {
-      email: authData.email,
-      userId: Math.round( Math.random() * 10000 ).toString(), // temp
-    };
-    this.authSuccessfully();
-  }
+    this.afAuth.signInWithEmailAndPassword(authData.email, authData.password)
+    .then( result => {
+      console.log(result);
+      this.authSuccessfully();
+    })
+    .catch( error => console.log(error) );
+}
 
   logout() {
-    this.user = null;
+    this.isAuthenticated = false;
     this.authChange.next( false );
   }
 
-  getUser() {
-    return { ...this.user} ; // spread operator, spread the object properties on a new object, making a copy of it
-    // this avoid that outside copy change our private object by reference
-  }
-
   isAuth() {
-    return this.user != null;
+    return this.isAuthenticated;
   }
 
   private authSuccessfully() {
+    this.isAuthenticated = true;
     this.authChange.next( true );
     this.router.navigate( [ '/training' ] );
   }
