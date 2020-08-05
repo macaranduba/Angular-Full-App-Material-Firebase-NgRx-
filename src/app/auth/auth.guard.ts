@@ -9,6 +9,7 @@ export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+    //return true; // break client-side authentication to test back-end unauthorized access enforcement
     if( this.authService.isAuth() ) {
       return true;
     } else {
