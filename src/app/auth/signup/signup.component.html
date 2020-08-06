@@ -49,11 +49,13 @@
       color="primary"
     >Li e concordo com os termos e condições.</mat-checkbox>
     <button
+      *ngIf=" ! (signInLoading$ | async)"
       type="submit"
       mat-raised-button
       color="primary"
       [disabled]="f.invalid"
     >Cadastrar</button>
+    <mat-spinner *ngIf="signInLoading$ | async"></mat-spinner>
   </form>
 </section>
 

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 import { AuthService } from '../auth.service';
+import { UIService } from 'src/app/shared/ui.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +13,7 @@ import { AuthService } from '../auth.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, public uiService: UIService) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({

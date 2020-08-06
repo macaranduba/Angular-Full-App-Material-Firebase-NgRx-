@@ -26,6 +26,7 @@
       <mat-hint>Insira aqui a sua senha.</mat-hint>
       <mat-error>Senha por preencher.</mat-error> <!-- if hint and error are present, error will override hint -->
     </mat-form-field>
-    <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Entrar</button>
+    <button *ngIf=" ! (uiService.loadingStateChanged | async)" mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Entrar</button>
+    <mat-spinner *ngIf="uiService.loadingStateChanged | async"></mat-spinner>
   </form>
 </section>
