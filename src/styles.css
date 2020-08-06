@@ -8,3 +8,13 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   margin: 0;
 }
+
+.snack_ok {
+	background: darkseagreen;
+	color: black;
+}
+
+.snack_error {
+	background: pink;
+	color: black;
+}

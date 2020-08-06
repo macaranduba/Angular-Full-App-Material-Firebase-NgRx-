@@ -14,12 +14,13 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
-import { CustomPaginator } from './common/angular/custom.paginator';
+import { CustomPaginator } from './common/material/custom.paginator';
 
 @NgModule({
   //imports: [],
@@ -38,6 +39,7 @@ import { CustomPaginator } from './common/angular/custom.paginator';
     MatNativeDateModule,
     MatSelectModule,
     MatSidenavModule,
+    MatSnackBarModule,
     MatSortModule,
     MatTableModule,
     MatTabsModule,
