@@ -1,4 +1,3 @@
-import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
@@ -32,7 +31,6 @@ import { WelcomeComponent } from './welcome/welcome.component';
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase), // general firebase setup
-    AngularFireAuthModule,
     AuthModule,
     BrowserModule,
     BrowserAnimationsModule,

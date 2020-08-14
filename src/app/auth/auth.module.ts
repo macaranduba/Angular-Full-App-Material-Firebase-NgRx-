@@ -1,3 +1,4 @@
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { BrowserModule } from '@angular/platform-browser';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,6 +14,7 @@ import { SignupComponent } from './signup/signup.component';
     SignupComponent,
   ],
   imports: [
+    AngularFireAuthModule,
     BrowserModule,
     //CommonModule,
     FlexLayoutModule,
