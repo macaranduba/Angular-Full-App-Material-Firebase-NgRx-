@@ -1,11 +1,9 @@
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { BrowserModule } from '@angular/platform-browser';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { LoginComponent } from './login/login.component';
-import { MaterialModule } from '../material.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from './../shared/shared.module';
 import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
@@ -15,16 +13,9 @@ import { SignupComponent } from './signup/signup.component';
   ],
   imports: [
     AngularFireAuthModule,
-    BrowserModule,
-    //CommonModule,
-    FlexLayoutModule,
-    FormsModule, // template-driven form in SignupComponent: ngForm, ngModel
-    MaterialModule,
     ReactiveFormsModule, // Reactive from in LoginComponent: formGroup,
-
+    SharedModule,
   ],
   exports: [],
 })
-export class AuthModule {
-
-}
+export class AuthModule { }

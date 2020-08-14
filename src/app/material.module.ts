@@ -20,7 +20,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
-import { CustomPaginator } from './common/material/custom.paginator';
+import { CustomPaginator } from './shared/material/custom.paginator';
 
 @NgModule({
   //imports: [],
