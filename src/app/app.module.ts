@@ -19,7 +19,6 @@ import { HeaderComponent } from './navigation/header/header.component';
 import { MaterialModule } from './material.module';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { TrainingService } from './training/training.service';
-import { TrainingModule } from './training/training.module';
 import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
@@ -37,7 +36,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
     FlexLayoutModule,
     FormsModule, // captures the form default submission (page reload) [to be removed after spliting the TrainingModule]
     ReactiveFormsModule,                                            // [to be removed after spliting the TrainingModule]
-    TrainingModule,
+    //TrainingModule, loaded lazily
 
     AppRoutingModule,
     MaterialModule,

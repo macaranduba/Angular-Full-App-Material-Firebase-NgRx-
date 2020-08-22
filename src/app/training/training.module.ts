@@ -5,8 +5,9 @@ import { CurrentTrainingComponent } from './current-training/current-training.co
 import { NewTrainingComponent } from './new-training/new-training.component';
 import { PastTrainingsComponent } from './past-trainings/past-trainings.component';
 import { StopTrainingComponent } from './current-training/stop-traning.component';
-import { TrainingComponent } from './training.component';
 import { SharedModule } from '../shared/shared.module';
+import { TrainingComponent } from './training.component';
+import { TrainingRoutingModule } from './traning-routing.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     AngularFirestoreModule, // firebase database
     SharedModule,
+    TrainingRoutingModule,
   ],
   exports: [],
   entryComponents: [ StopTrainingComponent ] // components that are neither instanriated by selector on HTML nor routing
