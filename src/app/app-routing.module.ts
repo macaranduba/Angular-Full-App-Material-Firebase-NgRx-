@@ -7,7 +7,11 @@ import { WelcomeComponent } from './welcome/welcome.component';
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
   //{ path: 'training', loadChildren: './training/training.module#TrainingModule' },
-  { path: 'training', loadChildren: () => import('./training/training.module').then(m => m.TrainingModule) }, // new ng 9 sintaxe
+  {
+    path: 'training',
+    loadChildren: () => import('./training/training.module').then(m => m.TrainingModule), // new ng 9 sintaxe
+    canLoad: [AuthGuard]
+  },
 ];
 
 @NgModule({

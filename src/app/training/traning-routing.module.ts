@@ -1,4 +1,3 @@
-import { AuthGuard } from '../auth/auth.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -6,7 +5,7 @@ import { TrainingComponent } from './training.component';
 
 
 const routes: Routes = [
-  { path: '', component: TrainingComponent, canActivate: [ AuthGuard ] }, // no path necessary because it would be appended to the
+  { path: '', component: TrainingComponent }, // no path necessary because it would be appended to the
   // lazily loaded one, declared in app-routing.module.ts
 ];
 
