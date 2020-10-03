@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { environment } from './../environments/environment';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 
@@ -37,6 +38,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
     BrowserAnimationsModule,
     FlexLayoutModule,
     FormsModule, // captures the form default submission (page reload) [to be removed after spliting the TrainingModule]
+    HttpClientModule,
     ReactiveFormsModule,                                            // [to be removed after spliting the TrainingModule]
     StoreModule.forRoot( {ui: appReducer} ),
 

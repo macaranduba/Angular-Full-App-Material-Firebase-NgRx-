@@ -1,6 +1,8 @@
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { NgModule } from '@angular/core';
 
+import { GoogleSheetsDbService } from 'ng-google-sheets-db';
+
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -20,5 +22,6 @@ import { SignupComponent } from './signup/signup.component';
     SharedModule,
   ],
   exports: [],
+  providers: [ GoogleSheetsDbService ], //https://www.npmjs.com/package/ng-google-sheets-db
 })
 export class AuthModule { }

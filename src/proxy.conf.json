@@ -1,0 +1,9 @@
+{
+  "/ipa/recommend": {
+      "target": "https://node-red-desafio-8-jlsr-2020-09-13.mybluemix.net",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+  }
+}
+
