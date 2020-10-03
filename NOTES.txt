@@ -73,7 +73,15 @@ service cloud.firestore {
  */
 > ng build --prod
 
+/**
+ * NgRx
+ */
+> npm install --save @ngrx/store
 
 
 
 
+
+TODO:
+  1) export to Excel,
+  2) web page with all data in table format to load on Power build

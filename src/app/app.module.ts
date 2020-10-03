@@ -5,6 +5,7 @@ import { environment } from './../environments/environment';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule, LOCALE_ID } from '@angular/core';
+import { StoreModule } from '@ngrx/store';
 
 // https://pt.stackoverflow.com/questions/332195/angular-6-data-e-hora-em-portugues
 import localePt from '@angular/common/locales/pt';
@@ -13,6 +14,7 @@ registerLocaleData(localePt);
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { appReducer }  from './app.reducer';
 import { AuthModule } from './auth/auth.module';
 import { AuthService } from './auth/auth.service';
 import { HeaderComponent } from './navigation/header/header.component';
@@ -36,10 +38,11 @@ import { WelcomeComponent } from './welcome/welcome.component';
     FlexLayoutModule,
     FormsModule, // captures the form default submission (page reload) [to be removed after spliting the TrainingModule]
     ReactiveFormsModule,                                            // [to be removed after spliting the TrainingModule]
-    //TrainingModule, loaded lazily
+    StoreModule.forRoot( {ui: appReducer} ),
 
     AppRoutingModule,
     MaterialModule,
+    //TrainingModule, loaded lazily
   ],
   providers: [
     AuthService,
