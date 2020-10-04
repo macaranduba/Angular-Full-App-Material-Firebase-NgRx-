@@ -29,4 +29,8 @@
     <button *ngIf=" ! (uiService.loadingStateChanged | async)" mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Entrar</button>
     <mat-spinner *ngIf="uiService.loadingStateChanged | async"></mat-spinner>
   </form>
+
+  <button type="button" [appExport]="articles" fileName="customers" class="btn btn-danger">
+    Export
+  </button>
 </section>

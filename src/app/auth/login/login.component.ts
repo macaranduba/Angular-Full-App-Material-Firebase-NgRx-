@@ -18,6 +18,8 @@ import { GoogleSheetsDbService } from 'ng-google-sheets-db';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
+  articles : Article[];
+
   constructor(private authService: AuthService, public uiService: UIService, private store: Store<{ui: fromApp.State}>,
     private httpClient: HttpClient, private googleSheetsDbService: GoogleSheetsDbService) { }
 
@@ -39,7 +41,11 @@ export class LoginComponent implements OnInit {
 
   getGoogleSheet() {
     const allCharacters$: Observable<Article[]> = this.googleSheetsDbService.get<Article>('1TW3AifJuaZgCoIJChGrobuLhnBNeUefuHFFJZaRERp4', 1, articleAttributesMapping);
-    allCharacters$.subscribe( data => console.log( data ));
+    allCharacters$.subscribe( data => {
+      this.articles = data;
+      console.log( data );
+    });
+
   }
 
   onLogon() {
@@ -71,13 +77,13 @@ export class LoginComponent implements OnInit {
 }
 
 export const articleAttributesMapping = {
-  data_informe: "DATA do INFORME",
+  "Data informe": "DATA do INFORME",
   semana: 'SEM.',
-  id: 'ID',
+  ID: 'ID',
 };
 
 export interface Article {
-  data_informe: string;
+  "Data informe": string;
   semana: number;
-  id: string;
+  ID: string;
 }
