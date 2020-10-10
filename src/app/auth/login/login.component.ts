@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
 import { AuthService } from '../auth.service';
@@ -24,6 +25,8 @@ export class LoginComponent implements OnInit {
     private httpClient: HttpClient, private googleSheetsDbService: GoogleSheetsDbService) { }
 
   ngOnInit(): void {
+    //let temp : Article[] = this.articles.filter( article => article["EXCLUIR?"] !== "X");
+
     this.store.subscribe( data => console.info("LoginComponent.ngOnInit() ", data) );
 
     this.loginForm = new FormGroup({
@@ -41,9 +44,11 @@ export class LoginComponent implements OnInit {
 
   getGoogleSheet() {
     const allCharacters$: Observable<Article[]> = this.googleSheetsDbService.get<Article>('1TW3AifJuaZgCoIJChGrobuLhnBNeUefuHFFJZaRERp4', 1, articleAttributesMapping);
-    allCharacters$.subscribe( data => {
-      this.articles = data;
-      console.log( data );
+    allCharacters$
+      .pipe( map( arts => arts.filter( article => article['EXCLUIR?'] !== "X" ) )  ) //
+      .subscribe( data => {
+        this.articles = data;
+        console.log( data );
     });
 
   }
@@ -74,16 +79,35 @@ export class LoginComponent implements OnInit {
       //{ headers }
     );
   }
+
+  public getTimeStamp() {
+    return new Date().toISOString();
+  }
 }
 
 export const articleAttributesMapping = {
+  "Nº do INFORME": "Nº do INFORME",
+  'SEM.': 'SEM.',
   "Data informe": "DATA do INFORME",
-  semana: 'SEM.',
-  ID: 'ID',
+  "POS. no INFORME": "POS. no INFORME",
+  "ID": "ID",
+  "EXCLUIR?": "EXCLUIR?",
 };
 
+/*
+SEM.
+Nº do INFORME
+DATA do INFORME
+POS. no INFORME
+ID
+EXCLUIR?	AUTORES	TÍTULO	PERIÓDICO / REPOSITÓRIO	DATA PUBL	URL	N	INDIVÍDUOS	CONDIÇÕES	EFEITOS	REFERÊNCIA (Vancouver)	NÍVEL de EVIDÊNCIA	TIPO de ESTUDO	ESPECIFICAÇÃO da TECNOLOGIA	SUMÁRIO dos ACHADOS	AVALIAÇÃO da QUALIDADE METODOLÓGICA	PAÍS	CASOS	ESCORE METODOLÓGICO	FAVORÁVEL / DESFAVORÁVEL	DIT
+*/
+
 export interface Article {
-  "Data informe": string;
-  semana: number;
-  ID: string;
+  "Nº do INFORME": number,
+  'SEM.': number,
+  "Data informe": Date,
+  "POS. no INFORME": number,
+  "ID": string,
+  "EXCLUIR?": string,
 }
