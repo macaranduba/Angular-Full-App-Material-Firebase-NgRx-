@@ -85,5 +85,8 @@ service cloud.firestore {
 1) export to Excel, https://blog.bitsrc.io/exporting-data-to-excel-in-angular-1d1194e8be29
 > npm install ngx-bootstrap xlsx file-saver --save
 
-TODO:
-  2) web page with all data in table format to load on Power build
+2) export to PDF
+https://www.c-sharpcorner.com/article/client-side-pdf-generation-in-angular-with-pdfmake/
+
+
+pull test
