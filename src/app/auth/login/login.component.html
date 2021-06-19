@@ -30,7 +30,7 @@
     <mat-spinner *ngIf="uiService.loadingStateChanged | async"></mat-spinner>
   </form>
 
-  <button type="button" [appExport]="articles" fileName="customers" class="btn btn-danger">
+  <button type="button" [appExport]="articles" [fileName]="'InformeDiárioEvidências'+getTimeStamp()" class="btn btn-danger" [disabled]="!articles">
     Export
   </button>
 </section>
